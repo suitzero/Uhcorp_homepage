@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uh Corporation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="lang-en">Uh Corporation</h1>
+            <h1 class="lang-ko" style="display: none;">Uh 주식회사</h1>
+            <button id="lang-toggle">한글</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="lang-en">About Us</h2>
+            <h2 class="lang-ko" style="display: none;">회사 소개</h2>
+            <p class="lang-en">Uh Corporation was established on December 10, 2025.</p>
+            <p class="lang-ko" style="display: none;">Uh 주식회사는 2025년 12월 10일에 설립되었습니다.</p>
+
+            <p class="lang-en"><strong>CEO:</strong> Hagyoon Choi</p>
+            <p class="lang-ko" style="display: none;"><strong>대표:</strong> 최학윤</p>
+        </section>
+
+        <section id="services">
+            <h2 class="lang-en">Business Areas</h2>
+            <h2 class="lang-ko" style="display: none;">사업 분야</h2>
+            <ul>
+                <li>
+                    <span class="lang-en">App Development</span>
+                    <span class="lang-ko" style="display: none;">앱 개발</span>
+                </li>
+                <li>
+                    <span class="lang-en">Game Development</span>
+                    <span class="lang-ko" style="display: none;">게임 개발</span>
+                </li>
+                <li>
+                    <span class="lang-en">AI Research</span>
+                    <span class="lang-ko" style="display: none;">AI 연구</span>
+                </li>
+                <li>
+                    <span class="lang-en">Physical Optics Research</span>
+                    <span class="lang-ko" style="display: none;">물리 광학 연구</span>
+                </li>
+                <li>
+                    <span class="lang-en">Surfing</span>
+                    <span class="lang-ko" style="display: none;">서핑</span>
+                </li>
+                <li>
+                    <span class="lang-en">Martial Arts</span>
+                    <span class="lang-ko" style="display: none;">무술</span>
+                </li>
+                <li>
+                    <span class="lang-en">Meditation Instruction</span>
+                    <span class="lang-ko" style="display: none;">명상 지도</span>
+                </li>
+                <li>
+                    <span class="lang-en">And more...</span>
+                    <span class="lang-ko" style="display: none;">등등</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Uh Corporation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        langToggle.addEventListener('click', () => {
+            const enElements = document.querySelectorAll('.lang-en');
+            const koElements = document.querySelectorAll('.lang-ko');
+
+            if (currentLang === 'en') {
+                enElements.forEach(el => el.style.display = 'none');
+                koElements.forEach(el => el.style.display = 'inline'); // inline or block depending on element?
+                // Actually, for list items spans it should be inline or inline-block, for headings block.
+                // Resetting to '' usually restores default display property which is safer.
+                koElements.forEach(el => el.style.display = '');
+                langToggle.textContent = 'English';
+                currentLang = 'ko';
+                document.documentElement.lang = 'ko';
+            } else {
+                enElements.forEach(el => el.style.display = '');
+                koElements.forEach(el => el.style.display = 'none');
+                langToggle.textContent = '한글';
+                currentLang = 'en';
+                document.documentElement.lang = 'en';
+            }
+        });
+    </script>
+</body>
+</html>
