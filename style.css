@@ -7,9 +7,9 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 1000px;
 }
 
 header {
@@ -18,14 +18,26 @@ header {
     padding: 1rem 0;
 }
 
-header .container {
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h1 {
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.title-container h1 {
     margin: 0;
+    font-size: 1.5rem;
 }
 
 #lang-toggle {
@@ -36,6 +48,8 @@ header h1 {
     cursor: pointer;
     font-weight: bold;
     border-radius: 4px;
+    white-space: nowrap;
+    font-family: inherit;
 }
 
 main {
@@ -43,7 +57,7 @@ main {
 }
 
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 h2 {
@@ -52,17 +66,75 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
+/* About Section Layout */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .header-content {
+        justify-content: space-between; /* Ensure items are spread out */
+    }
+
+    .title-container h1 {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .social-image {
+        flex: 0 0 40%;
+        max-width: 400px;
+    }
+
+    .about-text {
+        flex: 1;
+    }
+}
+
 ul {
     list-style-type: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    ul {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 li {
     background: #f9f9f9;
-    margin: 0.5rem 0;
     padding: 1rem;
     border-radius: 4px;
     border-left: 5px solid #3498db;
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 footer {

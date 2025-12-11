@@ -9,9 +9,14 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1 class="lang-en">Uh Corporation</h1>
-            <h1 class="lang-ko" style="display: none;">Uh 주식회사</h1>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="logo.png" alt="Uh Corporation Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1 class="lang-en">Uh Corporation</h1>
+                <h1 class="lang-ko" style="display: none;">Uh 주식회사</h1>
+            </div>
             <button id="lang-toggle">한글</button>
         </div>
     </header>
@@ -20,11 +25,17 @@
         <section id="about">
             <h2 class="lang-en">About Us</h2>
             <h2 class="lang-ko" style="display: none;">회사 소개</h2>
-            <p class="lang-en">Uh Corporation was established on December 10, 2025.</p>
-            <p class="lang-ko" style="display: none;">Uh 주식회사는 2025년 12월 10일에 설립되었습니다.</p>
 
-            <p class="lang-en"><strong>CEO:</strong> Hagyoon Choi</p>
-            <p class="lang-ko" style="display: none;"><strong>대표:</strong> 최학윤</p>
+            <div class="about-content">
+                <img src="social.jpg" alt="Company Social Group" class="social-image">
+                <div class="about-text">
+                    <p class="lang-en">Uh Corporation was established on December 10, 2025.</p>
+                    <p class="lang-ko" style="display: none;">Uh 주식회사는 2025년 12월 10일에 설립되었습니다.</p>
+
+                    <p class="lang-en"><strong>CEO:</strong> Hagyoon Choi</p>
+                    <p class="lang-ko" style="display: none;"><strong>대표:</strong> 최학윤</p>
+                </div>
+            </div>
         </section>
 
         <section id="services">
@@ -83,15 +94,17 @@
 
             if (currentLang === 'en') {
                 enElements.forEach(el => el.style.display = 'none');
-                koElements.forEach(el => el.style.display = 'inline'); // inline or block depending on element?
-                // Actually, for list items spans it should be inline or inline-block, for headings block.
-                // Resetting to '' usually restores default display property which is safer.
-                koElements.forEach(el => el.style.display = '');
+                koElements.forEach(el => {
+                    // Remove inline style to revert to CSS definition (block or inline)
+                    el.style.display = '';
+                });
                 langToggle.textContent = 'English';
                 currentLang = 'ko';
                 document.documentElement.lang = 'ko';
             } else {
-                enElements.forEach(el => el.style.display = '');
+                enElements.forEach(el => {
+                     el.style.display = '';
+                });
                 koElements.forEach(el => el.style.display = 'none');
                 langToggle.textContent = '한글';
                 currentLang = 'en';
